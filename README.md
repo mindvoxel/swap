@@ -1,5 +1,7 @@
-# swap
+# swap #
 ## ebay mixed with a barter system ##
+
+Move this folder to htdocs in xampp or lampp to run the site.
 
 The name of the mysql database is `swapbase` and the name of the profiles table is`profiles` which links to a table called
 `items`
