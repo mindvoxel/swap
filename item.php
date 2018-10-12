@@ -1,7 +1,8 @@
 <?php
 
     /*Items will be stored in an array in user's profile. This is the 
-    object that users will be trading back and forth.*/
+    object that users will be trading back and forth. Allows for 
+    duplicate items*/
     class Item{
 
         private $name;
