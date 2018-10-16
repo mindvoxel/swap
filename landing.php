@@ -22,9 +22,11 @@
       <p><img src="mainImg.jpg" alt="Yellow swap Arrows">
       <h1>&nbspWelcome to Swap</h1></p>
     </div>
+    
     <div class ="container" style="float:left">
       <p> Swap can be used to exchange or trade items with other users. Click "Browse All Listings" to see what other users can offer you or add an item to your inventory to start Swapping with others. </p>
     </div>
+    
     <div class = "row1">
       <form action="myProfile.html" method="post"> 
         <input type="submit" name="myProfile" value="View My Profile" style="height:30px; width:250px; margin:5px" />
@@ -33,7 +35,8 @@
         <input type="submit" name="editProfile" value="Edit My Profile" style="height:30px; width:250px; margin:5px" />
       </form>		
     </div>
-    <br><br>
+    <p><br><br><p>
+    
     <div class = "row2" >  
       <form action="myInventory.php" method="post"> 
         <input type="submit" name="myInventory" value="View My Inventory" style="height:30px; width:250px; margin:5px" />
@@ -42,17 +45,17 @@
         <input type="submit" name="editInventory" value="Edit My Inventory" style="height:30px; width:250px; margin:5px" />
       </form>
     </div>
-    <br><br>
-    <div>
+    <p><br><br><br><p>
+    
     <div class = "row3">  
       <form action="allListings.php" method="post"> 
         <input type="submit" name="allListings" value="Browse All Listings" style="height:40px; width:510px; margin:5px" />
       </form>		
     </div>
+
     <div style="margin:10px">
       <hr>
-      If you have any questions about Swap, please contact the system administrator at 
-      <a href="mailto:admin@swap.com">admin@swap.com</a>
+      <p>If you have any questions about Swap, please contact the system administrator at <a href="mailto:admin@swap.com">admin@swap.com</a></p>
     </div>
     
   </body>
@@ -73,6 +76,7 @@
 
 }
 
-.row1  input { float: left;}
-.row2  input { float: left;}
+.row1 { float: left; display: block;   }
+.row2 { float: left; display: block;   }
+.row2 { float: left; display: block;   }
 </style>
