@@ -48,8 +48,14 @@
     <p><br><br><br><p>
     
     <div class = "row3">  
+      <form action="inbox.php" method="post"> 
+        <input type="submit" name="inbox" value="My Inbox" style="height:40px; width:510px; margin:5px" />
+      </form>		
+    </div>
+    <p><br><br><p>
+    <div class = "row4">  
       <form action="allListings.php" method="post"> 
-        <input type="submit" name="allListings" value="Browse All Listings" style="height:40px; width:510px; margin:5px" />
+        <input type="submit" name="allListings" value="Browse All Listings" style="height:40px; width:510px; margin:5px;" />
       </form>		
     </div>
 
@@ -79,4 +85,5 @@
 .row1 { float: left; display: block;   }
 .row2 { float: left; display: block;   }
 .row2 { float: left; display: block;   }
+.row3 { float: left; display: block;   }
 </style>
