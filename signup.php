@@ -1,33 +1,29 @@
-<html>
-    <head>
-        <title>Signup</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    </head>
-        <div class="container">
+<?php
+require_once("profile.php");
+require_once("generate.php");
+$bottom = "";
+$body = <<<EOBODY
+        <form action ="{$_SERVER['PHP_SELF']}" method ="post">
             <h1>Sign up for Swap</h1>
+            
             <div class="form-group">
-                <form action ="" method ="post">
                     Username:
-                    <input class="form-control" name="username">
+                    <input class="form-control" type = 'text' name="username" required>
                     <br>
                     Password:
-                    <input class="form-control" name="password">
+                    <input class="form-control" type = "password" name="password" required>
                     <br>
-                    <button type="button" class="btn btn-primary">Sign up!</button>
-                </form>
+                    <button class="btn btn-primary" type="submit"  name ="signup">Sign up!</button>
             </div>
             <p>Already have an account? Click <a href="login.php">here</a> to login.</p>
-        </div>
-
-    <body>
-    
-    <?php
-
-
-
-    ?>
-
-    </body>
-
-  
-</html>
+        </form>
+EOBODY;
+if (isset($_POST["signup"]) && isset($_POST["username"]) && isset($_POST["password"])) {
+    $profile = new Profile($_POST["username"], $_POST["password"] , []);
+    $profile->add_profile_to_db();
+    $bottom .= "<p>Account Created! Please <a href=\"login.php\"> login here!</a></p>";
+    echo generatePage($body . $bottom, "Sign Up!");
+} else {
+    echo generatePage($body, "Sign Up!");
+}
+?>
