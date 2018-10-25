@@ -4,6 +4,12 @@
 
 #check to make sure logged in correctly, if not send to login page
 
+
+session_start();
+$_SESSION['user'] = 'gherr';
+$_SESSION['password']   = 'password';
+
+
 ?>
 
 <html>
@@ -28,7 +34,7 @@
     </div>
     
     <div class = "row1">
-      <form action="myProfile.html" method="post"> 
+      <form action="viewProfile.php" method="post"> 
         <input type="submit" name="myProfile" value="View My Profile" style="height:30px; width:250px; margin:5px" />
       </form>		
       <form action="editProfile.php" method="post"> 
@@ -38,7 +44,7 @@
     <p><br><br><p>
     
     <div class = "row2" >  
-      <form action="myInventory.php" method="post"> 
+      <form action="viewInventory.php" method="post"> 
         <input type="submit" name="myInventory" value="View My Inventory" style="height:30px; width:250px; margin:5px" />
       </form>		
       <form action="editInventory.php" method="post"> 
