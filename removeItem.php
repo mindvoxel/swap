@@ -46,19 +46,26 @@ $password = $_SESSION['password'];
 	
 	  $db = connectToDB($host, $user, $password, $database);
 	
-	  $sql = "SELECT `name`, `description`, `value` FROM `items` WHERE `user-key` = '".$username."'";
+	   $sql = "SELECT `image`, `name`, `description`, `value` FROM `items` WHERE `user-key` = '".$username."'";
 	
-	        $result = mysqli_query($db, $sql);	
+	  $result = mysqli_query($db, $sql);	
           $row_count=mysqli_num_rows($result);
           
 				echo("<table class = table table-bordered>");
-				echo("<tr><th>Name</th><th>Description</th><th>Value</th></tr>");
+				echo("<tr><th>Image</th><th>Name</th><th>Description</th><th>Value</th></tr>");
 				for($i =0; $i < $row_count; $i++){
 				  $result->data_seek($i);
           $row = $result->fetch_array(MYSQLI_ASSOC);
-          echo("<tr><td>".($row['name'])."</td><td>".($row['description'])."</td><td>".($row['value'])."</td></tr>");
+          
+          
+          echo("<tr><td>");
+          
+          echo("<img alt='product image' height='110' width='110' src='data:image/jpg;base64,".$row['image']."'></td>");
+          
+          echo("<td>".($row['name'])."</td><td>".($row['description'])."</td><td>".($row['value'])."</td></tr>");
 				}  
         echo("</table>");
+	
 	
           if (!$result) {
 		  die("Retrieval failed: ". $db->error);

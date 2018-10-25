@@ -38,17 +38,25 @@ $password = $_SESSION['password'];
     </div>
     <div class = "container-fluid">
     <?php 
-    $host = "localhost";
-	  $user = "swapadmin";
-	  $password = "password";
-	  $database = "swapbase";
-	  $table = "items";
+          $host = "localhost";
+	        $user = "swapadmin";
+	        $password = "password";
+	        $database = "swapbase";
+	        $table = "items";
 	
-	  $db = connectToDB($host, $user, $password, $database);
+	        $db = connectToDB($host, $user, $password, $database);
+	        
+	        $image = file_get_contents($_POST['file']);
+          $image_name = mysqli_real_escape_string($db, $_POST['file']);
+          $image = base64_encode($image); 
+          
+	        
+//you keep your column name setting for insertion. I keep image type Blob.
+	    
 	
-	  $sql = "INSERT INTO `items`(`name`, `user-key`, `description`, `value`) VALUES ('".$_POST['name']."','".$username."','".$_POST['desc']."',".$_POST['value'].")";
+	         $sql = "INSERT INTO `items`(`Image`, `name`, `user-key`, `description`, `value`) VALUES ('".$image."','".$_POST['name']."','".$username."','".$_POST['desc']."',".$_POST['value'].")";
 	
-	  $result = mysqli_query($db, $sql);	
+	        $result = mysqli_query($db, $sql);	
           
 	
           if (!$result) {

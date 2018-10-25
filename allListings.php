@@ -23,7 +23,7 @@ $password = $_SESSION['password'];
 <html>
 
   <head>
-    <title>View Inventory</title>
+    <title>View Listings</title>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -34,7 +34,7 @@ $password = $_SESSION['password'];
   <body>    
     <div class = "header" style="margin:10px">
       <p><img src="mainImg.jpg" alt="Yellow swap Arrows">
-      <h1>&nbspMy Inventory</h1></p>
+      <h1>&nbspView Listings</h1></p>
     </div>
     <div class = "container-fluid">
     <?php 
@@ -46,13 +46,13 @@ $password = $_SESSION['password'];
 	
 	  $db = connectToDB($host, $user, $password, $database);
 	
-	  $sql = "SELECT `image`, `name`, `description`, `value` FROM `items` WHERE `user-key` = '".$username."'";
+	  $sql = "SELECT `image`, `name`, `user-key`,`description`, `value` FROM `items` ORDER BY `user-key`";
 	
 	  $result = mysqli_query($db, $sql);	
           $row_count=mysqli_num_rows($result);
           
 				echo("<table class = table table-bordered>");
-				echo("<tr><th>Image</th><th>Name</th><th>Description</th><th>Value</th></tr>");
+				echo("<tr><th>Image</th><th>Name</th><th>Description</th><th>Value</th><th>Seller</th></tr>");
 				for($i =0; $i < $row_count; $i++){
 				  $result->data_seek($i);
           $row = $result->fetch_array(MYSQLI_ASSOC);
@@ -62,13 +62,18 @@ $password = $_SESSION['password'];
           
           echo("<img alt='product image' height='110' width='110' src='data:image/jpg;base64,".$row['image']."'></td>");
           
-          echo("<td>".($row['name'])."</td><td>".($row['description'])."</td><td>".($row['value'])."</td></tr>");
+          echo("<td>".($row['name'])."</td><td>".($row['description'])."</td><td>".($row['value'])."</td><td>".($row['user-key'])."</td></tr>");
 				}  
         echo("</table>");
+	
+          if (!$result) {
+		  die("Retrieval failed: ". $db->error);
+	  }
+	  
+	 
     ?>
     </div>
     
-    <div class = "container-fluid">
       <form action="landing.php"">
          <input type="submit" value="Return to Main Menu">
       </form>
@@ -96,6 +101,7 @@ $password = $_SESSION['password'];
   padding-bottom: 60px;
 
 }
+
 
 </style>
 
