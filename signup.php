@@ -11,7 +11,7 @@
                     <input class="form-control" name="username">
                     <br>
                     Password:
-                    <input class="form-control" name="password">
+                    <input type ="password" class="form-control" name="password">
                     <br>
                     <button type="button" class="btn btn-primary">Sign up!</button>
                 </form>
