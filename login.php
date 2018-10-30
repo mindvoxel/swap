@@ -11,13 +11,13 @@ $top = <<<EOBODY
             <strong>Password: </strong><input class = "form-control" id="password" type="password" name="password"
                                                    placeholder="Password" required/><br/><br/>
 
-            <button type="submit" name="login" class="btn btn-danger">Login!</button>
+            <button type="submit" name="login" class="btn btn-primary">Login!</button>
          </div>
     </form>
 <p>
 <form action = "signup.php" method = "post">
     <div class="form-group">
-            <button type="submit" name="signup" class="btn btn-outline-warning">Create a Swap Account!</button>
+            <button type="submit" name="signup" class="btn btn-primary">Create a Swap Account!</button>
     </div>
 </form>
 </p>

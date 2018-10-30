@@ -105,18 +105,6 @@
                     }
                 }
                 $conn->close();
-            } else {
-                //update database rather than add something new
-                //this allows people to update their password and stuff but is problematic for obvious reasons
-                //we should change it
-                $sqlQuery = sprintf("update $table set username = '%s' , password = '%s' where username = '%s'",
-                    $username, $password_encrypted, $username);
-                $result = mysqli_query($conn, $sqlQuery);
-                if ($result) {
-                    #"<h3>The entry has been updated in the database</h3>";
-                } else {
-                    "Updating records failed." . mysqli_error($conn);
-                }
             }
 
         }
