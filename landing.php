@@ -6,6 +6,7 @@
 
 
 session_start();
+
 $_SESSION['user'] = 'gherr';
 $_SESSION['password']   = 'password';
 
@@ -25,43 +26,43 @@ $_SESSION['password']   = 'password';
   
   <body>    
     <div class = "header" style="margin:10px">
-      <p><img src="mainImg.jpg" alt="Yellow swap Arrows">
+      <p><img src="mainImg.jpg" alt="Yellow swap Arrows" height='100' width='110'>
       <h1>&nbspWelcome to Swap</h1></p>
     </div>
     
     <div class ="container" style="float:left">
-      <p> Swap can be used to exchange or trade items with other users. Click "Browse All Listings" to see what other users can offer you or add an item to your inventory to start Swapping with others. </p>
+      <p> Swap can be used to exchange or trade items with other users. Click "Browse and SWAP" to see what other users can offer you or add an item to your inventory to start Swapping with others. </p>
     </div>
     
     <div class = "row1">
       <form action="viewProfile.php" method="post"> 
-        <input type="submit" name="myProfile" value="View My Profile" style="height:30px; width:250px; margin:5px" />
+        <input type="submit" name="myProfile" value="View My Profile" style="height:30px; width:250px; margin:5px" class="btn btn-warning"/>
       </form>		
       <form action="editProfile.php" method="post"> 
-        <input type="submit" name="editProfile" value="Edit My Profile" style="height:30px; width:250px; margin:5px" />
+        <input type="submit" name="editProfile" value="Edit My Profile" style="height:30px; width:250px; margin:5px" class="btn btn-warning"/>
       </form>		
     </div>
     <p><br><br><p>
     
     <div class = "row2" >  
       <form action="viewInventory.php" method="post"> 
-        <input type="submit" name="myInventory" value="View My Inventory" style="height:30px; width:250px; margin:5px" />
+        <input type="submit" name="myInventory" value="View My Inventory" style="height:30px; width:250px; margin:5px" class="btn btn-warning"/>
       </form>		
       <form action="editInventory.php" method="post"> 
-        <input type="submit" name="editInventory" value="Edit My Inventory" style="height:30px; width:250px; margin:5px" />
+        <input type="submit" name="editInventory" value="Edit My Inventory" style="height:30px; width:250px; margin:5px" class="btn btn-warning"/>
       </form>
     </div>
     <p><br><br><br><p>
     
     <div class = "row3">  
       <form action="inbox.php" method="post"> 
-        <input type="submit" name="inbox" value="My Inbox" style="height:40px; width:510px; margin:5px" />
+        <input type="submit" name="inbox" value="My Inbox" style="height:40px; width:510px; margin:5px" class="btn btn-warning"/>
       </form>		
     </div>
     <p><br><br><p>
     <div class = "row4">  
       <form action="allListings.php" method="post"> 
-        <input type="submit" name="allListings" value="Browse All Listings" style="height:40px; width:510px; margin:5px;" />
+        <input type="submit" name="allListings" value="Browse and SWAP" style="height:40px; width:510px; margin:5px;" class="btn btn-warning"/>
       </form>		
     </div>
 

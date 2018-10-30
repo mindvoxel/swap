@@ -14,8 +14,9 @@ function connectToDB($host, $user, $password, $database) {
 #check to make sure logged in correctly, if not send to login page
 
 
-session_start();
 
+session_start();
+$_SESSION['item1'] = $_POST['swap'];
 $username = $_SESSION['user'];
 $password = $_SESSION['password'];
 ?>
@@ -23,7 +24,7 @@ $password = $_SESSION['password'];
 <html>
 
   <head>
-    <title>Edit Inventory</title>
+    <title>Swap Listings</title>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -34,7 +35,7 @@ $password = $_SESSION['password'];
   <body>    
     <div class = "header" style="margin:10px">
       <p><img src="mainImg.jpg" alt="Yellow swap Arrows" height='100' width='110'>
-      <h1>&nbspEdit Inventory</h1></p>
+      <h1>&nbspSwap Listings</h1></p>
     </div>
     <div class = "container-fluid">
     <?php 
@@ -46,23 +47,36 @@ $password = $_SESSION['password'];
 	
 	  $db = connectToDB($host, $user, $password, $database);
 	
-	  $sql  = "DELETE FROM `items` WHERE `name` = '".$_POST['name']."' AND `value` = ".$_POST['value']." AND `user-key` = '".$username."' ";
+	  $sql = "SELECT `image`, `name`, `user-key`,`description`, `value` FROM `items` WHERE `user-key` ='".$username."' ORDER BY `user-key`";
 	
 	  $result = mysqli_query($db, $sql);	
+          $row_count=mysqli_num_rows($result);
           
+				echo("<table class = table table-bordered>");
+				echo("<tr><th>Image</th><th>Name</th><th>Description</th><th>Value</th><th>Seller</th><th>SWAP</th></tr>");
+				for($i =0; $i < $row_count; $i++){
+				  $result->data_seek($i);
+          $row = $result->fetch_array(MYSQLI_ASSOC);
+          
+          
+          echo("<form action = 'swapFull.php' method = 'POST'><tr><td>");
+          
+          echo("<img alt='product image' height='110'  src='data:image/jpg;base64,".$row['image']."'></td>");
+          
+          echo("<td>".($row['name'])."</td><td>".($row['description'])."</td><td>".($row['value'])."</td><td>".($row['user-key'])."</td>");
+	echo "<td><input type='radio' name='swap' value='".$row['user-key']."+".$row['name']."'></td></tr>";			}  
+        echo("</table><input id = 'b' type = 'submit' value = 'Swap Item' class='btn btn-warning' style = 'width:40%'></form>");
 	
           if (!$result) {
-		  die("Removal failed: ". $db->error);
+		  die("Retrieval failed: ". $db->error);
 	  }
-	  else{
-	        echo("Removal Complete");
-	  }
+	  
+	 
     ?>
     </div>
-    <br/>
-    <div class = "container-fluid">    
+    <div class = "container-fluid">
       <form action="landing.php"">
-         <input type="submit" value="Return to Main Menu">
+         <input id = "b" type="submit" value="Return to Main Menu" class="btn btn-warning" style = "width:40%">
       </form>
     </div>
     
@@ -86,6 +100,10 @@ $password = $_SESSION['password'];
   top: 15px;
   left: 10px;
   padding-bottom: 60px;
+
+}
+form{
+padding-top: 5px;
 
 }
 
