@@ -43,7 +43,9 @@
             " inventory: " . $this->inventory;
         }
         //some very very crude functions to add and access profiles in the database
+
         public function add_profile_to_db() {
+            //returns true if profile was added, false if it was not
             $profile = $this;
             $username = $profile->username;
             $password = $profile->password;
@@ -105,6 +107,9 @@
                     }
                 }
                 $conn->close();
+                return true;
+            } else {
+                return false;
             }
 
         }

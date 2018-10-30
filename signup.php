@@ -11,11 +11,7 @@ $body = <<<EOBODY
                     <input class="form-control" type = 'text' name="username" required>
                     <br>
                     Password:
-<<<<<<< HEAD
-                    <input type ="password" class="form-control" name="password">
-=======
                     <input class="form-control" type = "password" name="password" required>
->>>>>>> dbada044a2190b4f470d0edb62ebe5250fafe437
                     <br>
                     <button class="btn btn-primary" type="submit"  name ="signup">Sign up!</button>
             </div>
@@ -24,8 +20,11 @@ $body = <<<EOBODY
 EOBODY;
 if (isset($_POST["signup"]) && isset($_POST["username"]) && isset($_POST["password"])) {
     $profile = new Profile($_POST["username"], $_POST["password"] , []);
-    $profile->add_profile_to_db();
-    $bottom .= "<p>Account Created! Please <a href=\"login.php\"> login here!</a></p>";
+    if ($profile->add_profile_to_db()) {
+        $bottom .= "<p>Account Created! Please <a href=\"login.php\"> login here!</a></p>";
+    } else {
+        $bottom .= "<p>Too slow, username already exists!</p>";
+    }
     echo generatePage($body . $bottom, "Sign Up!");
 } else {
     echo generatePage($body, "Sign Up!");
