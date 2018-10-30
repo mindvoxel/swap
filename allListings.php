@@ -33,7 +33,7 @@ $password = $_SESSION['password'];
   
   <body>    
     <div class = "header" style="margin:10px">
-      <p><img src="mainImg.jpg" alt="Yellow swap Arrows">
+      <p><img src="mainImg.jpg" alt="Yellow swap Arrows" height='100' width='110'>
       <h1>&nbspView Listings</h1></p>
     </div>
     <div class = "container-fluid">
@@ -46,25 +46,25 @@ $password = $_SESSION['password'];
 	
 	  $db = connectToDB($host, $user, $password, $database);
 	
-	  $sql = "SELECT `image`, `name`, `user-key`,`description`, `value` FROM `items` ORDER BY `user-key`";
+	  $sql = "SELECT `image`, `name`, `user-key`,`description`, `value` FROM `items` WHERE `user-key` !='".$username."' ORDER BY `user-key`";
 	
 	  $result = mysqli_query($db, $sql);	
           $row_count=mysqli_num_rows($result);
           
 				echo("<table class = table table-bordered>");
-				echo("<tr><th>Image</th><th>Name</th><th>Description</th><th>Value</th><th>Seller</th></tr>");
+				echo("<tr><th>Image</th><th>Name</th><th>Description</th><th>Value</th><th>Seller</th><th>SWAP</th></tr>");
 				for($i =0; $i < $row_count; $i++){
 				  $result->data_seek($i);
           $row = $result->fetch_array(MYSQLI_ASSOC);
           
           
-          echo("<tr><td>");
+          echo("<form action = 'swapItems.php' method = 'POST'><tr><td>");
           
-          echo("<img alt='product image' height='110' width='110' src='data:image/jpg;base64,".$row['image']."'></td>");
+          echo("<img alt='product image' height='110'  src='data:image/jpg;base64,".$row['image']."'></td>");
           
-          echo("<td>".($row['name'])."</td><td>".($row['description'])."</td><td>".($row['value'])."</td><td>".($row['user-key'])."</td></tr>");
-				}  
-        echo("</table>");
+          echo("<td>".($row['name'])."</td><td>".($row['description'])."</td><td>".($row['value'])."</td><td>".($row['user-key'])."</td>");
+	echo "<td><input type='radio' name='swap' value='".$row['user-key']."+".$row['name']."'></td></tr>";			}  
+        echo("</table><input id = 'b' type = 'submit' value = 'Swap Item' class='btn btn-warning' style = 'width:40%'></form>");
 	
           if (!$result) {
 		  die("Retrieval failed: ". $db->error);
@@ -73,9 +73,9 @@ $password = $_SESSION['password'];
 	 
     ?>
     </div>
-    
+    <div class = "container-fluid">
       <form action="landing.php"">
-         <input type="submit" value="Return to Main Menu">
+         <input id = "b" type="submit" value="Return to Main Menu" class="btn btn-warning" style = "width:40%">
       </form>
     </div>
     
@@ -99,6 +99,10 @@ $password = $_SESSION['password'];
   top: 15px;
   left: 10px;
   padding-bottom: 60px;
+
+}
+form{
+padding-top: 5px;
 
 }
 

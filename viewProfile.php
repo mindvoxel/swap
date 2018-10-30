@@ -68,7 +68,7 @@ $password = $_SESSION['password'];
     
     <div class = "container-fluid">
       <form action="landing.php"">
-         <input type="submit" value="Return to Main Menu">
+         <input type="submit" value="Return to Main Menu" class="btn btn-warning" style = "width:40%">
       </form>
     </div>
     

@@ -33,7 +33,7 @@ $password = $_SESSION['password'];
   
   <body>    
     <div class = "header" style="margin:10px">
-      <p><img src="mainImg.jpg" alt="Yellow swap Arrows">
+      <p><img src="mainImg.jpg" alt="Yellow swap Arrows" height='100' width='110'>
       <h1>&nbspEdit Inventory</h1></p>
     </div>
     <div class = "container-fluid">
@@ -60,7 +60,7 @@ $password = $_SESSION['password'];
           
           echo("<tr><td>");
           
-          echo("<img alt='product image' height='110' width='110' src='data:image/jpg;base64,".$row['image']."'></td>");
+          echo("<img alt='product image' height='110' src='data:image/jpg;base64,".$row['image']."'></td>");
           
           echo("<td>".($row['name'])."</td><td>".($row['description'])."</td><td>".($row['value'])."</td></tr>");
 				}  
@@ -75,16 +75,15 @@ $password = $_SESSION['password'];
     </div>
     
     <div class = "container-fluid" >
+    
+    <form action="insertItem.php"">
+         <input type="submit" value="Insert Item" class="btn btn-warning" style = "width:40%">
+      </form>
       <form action="removeItem.php"">
-         <input type="submit" value="Remove Item">
+         <input type="submit" value="Remove Item" class="btn btn-warning" style = "width:40%">
       </form>
-
-      <form action="insertItem.php"">
-         <input type="submit" value="Insert Item">
-      </form>
-
       <form action="landing.php"">
-         <input type="submit" value="Return to Main Menu">
+         <input type="submit" value="Return to Main Menu" class="btn btn-warning" style = "width:40%">
       </form>
     </div>
     
@@ -109,6 +108,9 @@ $password = $_SESSION['password'];
   left: 10px;
   padding-bottom: 60px;
 
+}
+form {
+padding-bottom: 5px;
 }
 
 

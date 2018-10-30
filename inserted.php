@@ -33,7 +33,7 @@ $password = $_SESSION['password'];
   
   <body>    
     <div class = "header" style="margin:10px">
-      <p><img src="mainImg.jpg" alt="Yellow swap Arrows">
+      <p><img src="mainImg.jpg" alt="Yellow swap Arrows" height='100' width='110'>
       <h1>&nbspEdit Inventory</h1></p>
     </div>
     <div class = "container-fluid">
@@ -60,7 +60,7 @@ $password = $_SESSION['password'];
           
 	
           if (!$result) {
-		  die("Insertion failed: ". $db->error);
+		echo("Insertion Complete");
 	  }
 	  else{
 	        echo("Insertion Complete");

@@ -13,8 +13,13 @@ function connectToDB($host, $user, $password, $database) {
 
 #check to make sure logged in correctly, if not send to login page
 
-
 session_start();
+$item1 = $_SESSION['item1'];
+$item2 = $_POST['swap'];
+
+list($recipient, $item1) = preg_split('/[+]/', $item1);
+list($sender, $item2) = preg_split('/[+]/', $item2);
+
 
 $username = $_SESSION['user'];
 $password = $_SESSION['password'];
@@ -23,7 +28,7 @@ $password = $_SESSION['password'];
 <html>
 
   <head>
-    <title>Edit Inventory</title>
+    <title>Swap Listings</title>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -34,35 +39,37 @@ $password = $_SESSION['password'];
   <body>    
     <div class = "header" style="margin:10px">
       <p><img src="mainImg.jpg" alt="Yellow swap Arrows" height='100' width='110'>
-      <h1>&nbspEdit Inventory</h1></p>
+      <h1>&nbspSwap Listings</h1></p>
     </div>
     <div class = "container-fluid">
     <?php 
     $host = "localhost";
-	  $user = "swapadmin";
-	  $password = "password";
-	  $database = "swapbase";
-	  $table = "items";
+    $user = "swapadmin";
+    $password = "password";
+    $database = "swapbase";
+    $table = "ibbox";
 	
 	  $db = connectToDB($host, $user, $password, $database);
 	
-	  $sql  = "DELETE FROM `items` WHERE `name` = '".$_POST['name']."' AND `value` = ".$_POST['value']." AND `user-key` = '".$username."' ";
+	  $sql = "INSERT INTO `inbox`(`Recipient`, `Sender`, `Item1`, `Item2`) VALUES ('".$recipient."','".$sender."','".$item1."','".$item2."')";
 	
 	  $result = mysqli_query($db, $sql);	
           
+	  echo("Message sent to seller's inbox.");
 	
           if (!$result) {
-		  die("Removal failed: ". $db->error);
+		  die("Retrieval failed: ". $db->error);
 	  }
 	  else{
-	        echo("Removal Complete");
+	    echo("Message sent to seller's inbox. If accepted, the items will be swapped in your inventories. Thank you.");
 	  }
+	  
+	 
     ?>
     </div>
-    <br/>
-    <div class = "container-fluid">    
+    <div class = "container-fluid">
       <form action="landing.php"">
-         <input type="submit" value="Return to Main Menu">
+         <input id = "b" type="submit" value="Return to Main Menu" class="btn btn-warning" style = "width:40%">
       </form>
     </div>
     
@@ -86,6 +93,10 @@ $password = $_SESSION['password'];
   top: 15px;
   left: 10px;
   padding-bottom: 60px;
+
+}
+form{
+padding-top: 5px;
 
 }
 
