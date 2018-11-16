@@ -86,9 +86,9 @@
                     $sql2 = "CREATE TABLE items (
                     Image LONGBLOB NOT NULL,
                     name VARCHAR(100) NOT NULL, 
-                    user_key VARCHAR(75) NOT NULL,
+                    user-key VARCHAR(75) NOT NULL,
                     description VARCHAR(1000),
-                    estimated_value VARCHAR(10))";
+                    value VARCHAR(10))";
                     
                     $sql3 = "CREATE TABLE inbox ( 
                     Recipient VARCHAR(50) NOT NULL, 
