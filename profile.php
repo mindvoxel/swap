@@ -84,10 +84,18 @@
                     password VARCHAR(75) NOT NULL)";
 
                     $sql2 = "CREATE TABLE items (
+                    Image LONGBLOB NOT NULL,
                     name VARCHAR(100) NOT NULL, 
                     user_key VARCHAR(75) NOT NULL,
                     description VARCHAR(1000),
                     estimated_value VARCHAR(10))";
+                    
+                    $sql3 = "CREATE TABLE inbox ( 
+                    Recipient VARCHAR(50) NOT NULL, 
+                    Sender VARCHAR(50) NOT NULL,
+                    Item1 VARCHAR(100),
+                    Item2 VARCHAR(100))";
+
 
                     //need to link the inventory table to the profile table with a key, not quite sure how to do that
 

@@ -52,7 +52,7 @@ $password = $_SESSION['password'];
           
 	
           if (!$result) {
-		  die("Removal failed: ". $db->error);
+	        echo("Unable to Remove");
 	  }
 	  else{
 	        echo("Removal Complete");
@@ -62,7 +62,7 @@ $password = $_SESSION['password'];
     <br/>
     <div class = "container-fluid">    
       <form action="landing.php"">
-         <input type="submit" value="Return to Main Menu">
+         <input type="submit" value="Return to Main Menu" class="btn btn-warning" style = "width:40%">
       </form>
     </div>
     

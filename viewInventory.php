@@ -60,7 +60,7 @@ $password = $_SESSION['password'];
           
           echo("<tr><td>");
           
-          echo("<img alt='product image' height='110' src='data:image/jpg;base64,".$row['image']."'></td>");
+          echo("<img alt='product image' height='110' src='data:image/jpeg;base64,".$row['image']."'></td>");
           
           echo("<td>".($row['name'])."</td><td>".($row['description'])."</td><td>".($row['value'])."</td></tr>");
 				}  

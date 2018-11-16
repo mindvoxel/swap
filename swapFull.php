@@ -53,9 +53,7 @@ $password = $_SESSION['password'];
 	
 	  $sql = "INSERT INTO `inbox`(`Recipient`, `Sender`, `Item1`, `Item2`) VALUES ('".$recipient."','".$sender."','".$item1."','".$item2."')";
 	
-	  $result = mysqli_query($db, $sql);	
-          
-	  echo("Message sent to seller's inbox.");
+	  $result = mysqli_query($db, $sql);	  
 	
           if (!$result) {
 		  die("Retrieval failed: ". $db->error);

@@ -5,8 +5,8 @@
 #check to make sure logged in correctly, if not send to login page
 
 
+#here is where we link the login and signup pages to the landing page
 session_start();
-
 $_SESSION['user'] = 'gherr';
 $_SESSION['password']   = 'password';
 

@@ -60,7 +60,7 @@ $password = $_SESSION['password'];
           
           echo("<tr><td>");
           
-          echo("<img alt='product image' height='110' src='data:image/jpg;base64,".$row['image']."'></td>");
+          echo("<img alt='product image' height='110' src='data:image/jpeg;base64,".$row['image']."'></td>");
           
           echo("<td>".($row['name'])."</td><td>".($row['description'])."</td><td>".($row['value'])."</td></tr>");
 				}  
@@ -77,12 +77,12 @@ $password = $_SESSION['password'];
          Description: <input type = "text" name = "desc"></br>
          Value:       <input type = "number" name = "value"><br/><br/>
       
-         <input type="submit" value="Submit">
+         <input type="submit" value="Submit" class="btn btn-warning" style = "width:40%">
          
       </form>
         <br/>
       <form action="landing.php"">
-         <input type="submit" value="Return to Main Menu">
+         <input type="submit" value="Return to Main Menu" class="btn btn-warning" style = "width:40%">
       </form>
     </div>
     
