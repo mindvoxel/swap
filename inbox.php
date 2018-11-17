@@ -105,8 +105,8 @@ $password = $_SESSION['password'];
            
            echo("<td>".$item2."</td><td>".$desc2."</td><td>".$value2."</td>");
            
-           echo("<td><input type='radio' name='accept' value='".$recipient."+".$item1."+".$sender."+".$item2."'></td>");
-           echo("<td><input type='radio' name='delete' value='".$recipient."+".$item1."+".$sender."+".$item2."'></td></tr>");
+           echo("<td><input type='radio' name='accept' value='accept+".$recipient."+".$item1."+".$sender."+".$item2."'></td>");
+           echo("<td><input type='radio' name='accept' value='delete+".$recipient."+".$item1."+".$sender."+".$item2."'></td></tr>");
 				}
         echo("</table><input type = 'submit' value = 'Accept/Delete' class='btn btn-warning' style = 'width:40%;margin-bottom:10px'>  </form>");
         

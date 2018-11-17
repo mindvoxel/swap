@@ -33,14 +33,16 @@ function connectToDB($host, $user, $password, $database) {
 	}
 }  
 
-if((isset($_POST['accept']) && !isset($_POST['accept'])) || (isset($_POST['accept']) && isset($_POST['accept'])) ){
+if((isset($_POST['accept']) )){
   $swap = $_POST['accept'];
-  list($recipient, $item1, $sender, $item2) = preg_split('/[+]/', $swap);
+  list($mode, $recipient, $item1, $sender, $item2) = preg_split('/[+]/', $swap);
   $host = "localhost";
 	$user = "swapadmin";
 	$password = "password";
 	$database = "swapbase";
   $db = connectToDB($host, $user, $password, $database);
+  
+  if ($mode == 'accept'){
   
   $sql = "UPDATE `items` SET `user-key`= '".$recipient."'  WHERE `user-key` = '".$sender."' AND `name` = '".$item2."'";
 	
@@ -99,15 +101,8 @@ if((isset($_POST['accept']) && !isset($_POST['accept'])) || (isset($_POST['accep
 	  
   echo("<div class = 'container-fluid'><p>Completed Accept</p></div>");
  }}}}}}}}
-elseif (isset($_POST['delete'])){
-  $delete = $_POST['delete'];
-  list($recipient, $item1, $sender, $item2) = preg_split('/[+]/', $delete);
+ else{
   
-  $host = "localhost";
-	$user = "swapadmin";
-	$password = "password";
-	$database = "swapbase";
-  $db = connectToDB($host, $user, $password, $database);
   
   $sql3 = "DELETE FROM `inbox` WHERE `Recipient` = '".$recipient."' AND `Sender` = '".$sender."' AND `Item1` = '".$item1."' AND `Item2` = '".$item2."'";
 	  
@@ -120,6 +115,7 @@ elseif (isset($_POST['delete'])){
 	    echo("<div class = 'container-fluid'><p>Completed Delete</p></div>");
 	  }
   
+}
 }
 else{
 
