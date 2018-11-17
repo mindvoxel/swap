@@ -28,6 +28,8 @@ $password = $_SESSION['password'];
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
    
   </head>
   
@@ -45,18 +47,22 @@ $password = $_SESSION['password'];
 	  $table = "items";
 	
 	  $db = connectToDB($host, $user, $password, $database);
+	  
+	  if (!isset($_POST['delete'])){
+	        echo("No Item Selected.");
+	  }else{
+	      list($name, $desc, $value) = preg_split('/[+]/', $_POST['delete']);
+	      $sql  = "DELETE FROM `items` WHERE `name` = '".$name."' AND `user-key` = '".$username."' AND `description` = '".$desc."' AND `value` = '".$value."'";
 	
-	  $sql  = "DELETE FROM `items` WHERE `name` = '".$_POST['name']."' AND `value` = ".$_POST['value']." AND `user-key` = '".$username."' ";
+	      $result = mysqli_query($db, $sql);	
+              
 	
-	  $result = mysqli_query($db, $sql);	
-          
-	
-          if (!$result) {
-	        echo("Unable to Remove");
-	  }
-	  else{
-	        echo("Removal Complete");
-	  }
+              if (!$result) {
+	            echo("Unable to Remove");
+	      }
+	      else{
+	            echo("Removal Complete");
+	      }}
     ?>
     </div>
     <br/>

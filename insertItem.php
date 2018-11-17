@@ -28,6 +28,8 @@ $password = $_SESSION['password'];
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
    
   </head>
   
@@ -72,17 +74,21 @@ $password = $_SESSION['password'];
 
       <form action="inserted.php" method = "POST" >
       
-         Image: <input type = "file" name = "file"><br/>
-         Item-Name:   <input type = "text" name = "name"><br/>
-         Description: <input type = "text" name = "desc"></br>
-         Value:       <input type = "number" name = "value"><br/><br/>
+           <div class="btn btn-warning btn-sm float-left">
+             <span>Upload File</span>
+             <input type="file" name = "file" required>
+           </div>
+         <br/><br/>
+         
+         <input type = "text" name = "name" class="form-control" placeholder = "Item-Name" required><br/>
+         <input type = "text" name = "desc" class="form-control" placeholder = "Description" required></br>
+         <input type = "number" name = "value" class="form-control" placeholder = "Value" required><br/>
       
          <input type="submit" value="Submit" class="btn btn-warning" style = "width:40%">
          
       </form>
-        <br/>
       <form action="landing.php"">
-         <input type="submit" value="Return to Main Menu" class="btn btn-warning" style = "width:40%">
+         <input type="submit" value="Return to Main Menu" class="btn btn-warning" style = "width:40%; margin-top:5px">
       </form>
     </div>
     

@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
    
   </head>
   
@@ -79,8 +81,24 @@ if((isset($_POST['accept']) && !isset($_POST['accept'])) || (isset($_POST['accep
 		  echo("Error");
 	  }else{
 	  
+	  $sql6 = "DELETE FROM `inbox` WHERE `Sender` = '".$recipient."'  AND `Item2` = '".$item1."'";
+	  
+	$result = mysqli_query($db, $sql6);	
+	
+	if (!$result) {
+		  echo("Error");
+	  }else{
+	
+	$sql7 = "DELETE FROM `inbox` WHERE `Sender` = '".$sender."'  AND `Item2` = '".$item2."'";
+	  
+	$result = mysqli_query($db, $sql7);	
+	
+	if (!$result) {
+		  echo("Error");
+	  }else{
+	  
   echo("<div class = 'container-fluid'><p>Completed Accept</p></div>");
- }}}}}}
+ }}}}}}}}
 elseif (isset($_POST['delete'])){
   $delete = $_POST['delete'];
   list($recipient, $item1, $sender, $item2) = preg_split('/[+]/', $delete);

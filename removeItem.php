@@ -28,7 +28,9 @@ $password = $_SESSION['password'];
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-   
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
   </head>
   
   <body>    
@@ -51,8 +53,8 @@ $password = $_SESSION['password'];
 	  $result = mysqli_query($db, $sql);	
           $row_count=mysqli_num_rows($result);
           
-				echo("<table class = table table-bordered>");
-				echo("<tr><th>Image</th><th>Name</th><th>Description</th><th>Value</th></tr>");
+				echo("<form action = 'removed.php' method = 'POST'><table class = table table-bordered>");
+				echo("<tr><th>Image</th><th>Name</th><th>Description</th><th>Value</th><th>Delete</th></tr>");
 				for($i =0; $i < $row_count; $i++){
 				  $result->data_seek($i);
           $row = $result->fetch_array(MYSQLI_ASSOC);
@@ -62,31 +64,20 @@ $password = $_SESSION['password'];
           
           echo("<img alt='product image' height='110' src='data:image/jpeg;base64,".$row['image']."'></td>");
           
-          echo("<td>".($row['name'])."</td><td>".($row['description'])."</td><td>".($row['value'])."</td></tr>");
+          echo("<td>".($row['name'])."</td><td>".($row['description'])."</td><td>".($row['value'])."</td><td><input type='radio' name='delete' value='".$row['name']."+".$row['description']."+".$row['value']."'></td></tr>");
 				}  
-        echo("</table>");
+        echo("</table><input type = 'submit' value = 'Delete' class='btn btn-warning' style = 'width:40%'>  </form>");
 	
 	
           if (!$result) {
-		  die("Retrieval failed: ". $db->error);
+            echo("Could not retrieve item.");
 	  }
     ?>
     </div>
-    
-    <div class = "container-fluid" >
-      <strong>Type the name and value of the item you would like to remove.</strong>
 
-      <form action="removed.php" method = "POST" >
-      
-         Item-Name:   <input type = "text" name = "name"><br/>
-         Value:       <input type = "number" name = "value" ><br/><br/>
-      
-         <input type="submit" value="Submit" class="btn btn-warning" style = "width:40%">
-         
-      </form>
-        <br/>
+    <div class = "container-fluid" >
       <form action="landing.php"">
-         <input type="submit" value="Return to Main Menu" class="btn btn-warning" style = "width:40%">
+         <input type="submit" value="Return to Main Menu" class="btn btn-warning" style = "width:40%; margin-top:5px">
       </form>
     </div>
     
@@ -112,7 +103,5 @@ $password = $_SESSION['password'];
   padding-bottom: 60px;
 
 }
-
-
 </style>
 
