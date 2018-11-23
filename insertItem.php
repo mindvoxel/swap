@@ -81,7 +81,10 @@ $password = $_SESSION['password'];
          <br/><br/>
          
          <input type = "text" name = "name" class="form-control" placeholder = "Item-Name" required><br/>
-         <input type = "text" name = "desc" class="form-control" placeholder = "Description" required></br>
+         <!--Are we allowed to use HTML validation, if we already have already fulfilled the JS validation requirment?-->
+         <input type = "text" name = "desc" class="form-control" placeholder = "Description" autofocus required title= 
+         "Limit your description to 139 characters. No special characters
+         (+ - !@#$%&*)" pattern ="[\w\s]" required></br>
          <input type = "number" name = "value" class="form-control" placeholder = "Value" required><br/>
       
          <input type="submit" value="Submit" class="btn btn-warning" style = "width:40%">
