@@ -13,6 +13,11 @@ validate_file = function(){
     //the last item should be the length of the split array - 1
     last = (split_path.length - 1);
 
+    //cannot contain a +
+    if (file_name.includes("+")){
+        return false;
+    }
+
     if (split_path[last] === "png" || split_path[last] === "jpg" || split_path[last] === "jpeg"){
         return true;
     }
@@ -21,11 +26,14 @@ validate_file = function(){
     return false;
 }
 
+
+
 //register event listeners
 main = function(){
     //form
     form_element = document.getElementById('insert_form');
     form_element.onsubmit = validate_file; //function pointer
+    //Description: Must be less than 140 characters and not contain + - !@#$%&*
 }
 
 main();

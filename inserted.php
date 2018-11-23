@@ -58,8 +58,9 @@ $password = $_SESSION['password'];
           //SHOULD THIS BE VALIDATED ONCE A FORM IS SUBMITTED, because maybe we should query the database to check item already
           //exists?
           //Item-Name: must be unique for the user- if Mary has a car and Grace has a car it is fine 
-          //but Grace cannot have 2 items named car and cannot contain 
-	         $sql = "INSERT INTO `items`(`Image`, `name`, `user-key`, `description`, `value`) VALUES ('".$image."','".$_POST['name']."','".$username."','".$_POST['desc']."',".$_POST['value'].")";
+          //but Grace cannot have 2 items named car and cannot contain +
+	         $sql = "INSERT INTO `items`(`Image`, `name`, `user-key`, `description`, `value`) 
+           VALUES ('".$image."','".$_POST['name']."','".$username."','".$_POST['desc']."',".$_POST['value'].")";
 	
 	        $result = mysqli_query($db, $sql);	
           
