@@ -72,11 +72,11 @@ $password = $_SESSION['password'];
     
     <div class = "container-fluid" >
 
-      <form action="inserted.php" method = "POST" >
+      <form id="insert_form" action="inserted.php" method = "POST" >
       
            <div class="btn btn-warning btn-sm float-left">
              <span>Upload File</span>
-             <input type="file" name = "file" required>
+             <input id="file" type="file" name = "file" required>
            </div>
          <br/><br/>
          
@@ -96,6 +96,8 @@ $password = $_SESSION['password'];
       <hr>
       <p>If you have any questions about Swap, please contact the system administrator at <a href="mailto:admin@swap.com">admin@swap.com</a></p>
     </div>
+
+    <script src = "validation.js"></script>
     
   </body>
 </html>
