@@ -90,9 +90,10 @@ $password = $_SESSION['password'];
          
          <input type = "text" name = "name" class="form-control" placeholder = "Item-Name" required><br/>
          
-         <!--Blank pattern for now-->
-         <input type = "text" name = "desc" class="form-control" placeholder = "Description" autofocus required title= 
-         "Limit your description to 140 characters. No special characters (+-!@#$%&*)" min="1" max="140" required></br>
+         <!--Need a custom error message when pattern doesn't match. Having it in the page looks tacky-->
+         <em>Description cannot cannot contain any special characters. Must be within 140 characters and not contain + - !@#$%&</em>
+         <input type = "text" name = "desc" class="form-control" placeholder = "Description" pattern= "[\w\s]"
+          min="1" max="140" required></br>
         
          <input type = "number" name = "value" class="form-control" placeholder = "Value" min="1" max="500000"
          required><br/>
