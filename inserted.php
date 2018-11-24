@@ -47,18 +47,30 @@ $password = $_SESSION['password'];
 	        $table = "items";
 	
 	        $db = connectToDB($host, $user, $password, $database);
-	        
-	        $image = file_get_contents($_POST['file']);
+          
+          $image = file_get_contents($_POST['file']);//Chris' note: on my computer failed to open file stream on this line when uploading image
+          
           $image_name = mysqli_real_escape_string($db, $_POST['file']);
           $image = base64_encode($image); 
           
 	        
 //you keep your column name setting for insertion. I keep image type Blob.
       
-          //SHOULD THIS BE VALIDATED ONCE A FORM IS SUBMITTED, because maybe we should query the database to check item already
-          //exists?
+          //query the database to check item already exists, and if it does reroute to insertItem.php
           //Item-Name: must be unique for the user- if Mary has a car and Grace has a car it is fine 
           //but Grace cannot have 2 items named car and cannot contain +
+          $query = "SELECT * from items where name =" . $_POST['name'] . ";";
+          if ($result=mysqli_query($db,$query)) {
+            if(mysqli_num_rows($result) > 0){
+                //means there was already an item with that name in the database
+                //send them back to insertItem with an error message stored in the superglobal
+                $_SESSION['name_exists'] = true;
+                header("insertItem.php");
+            }
+          }else{
+            echo "Failed to check for item in table!";
+          }
+
 	         $sql = "INSERT INTO `items`(`Image`, `name`, `user-key`, `description`, `value`) 
            VALUES ('".$image."','".$_POST['name']."','".$username."','".$_POST['desc']."',".$_POST['value'].")";
 	

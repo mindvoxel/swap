@@ -14,9 +14,9 @@ validate_file = function(){
     last = (split_path.length - 1);
 
     //cannot contain a +
-    if (file_name.includes("+")){
-        return false;
-    }
+    //if (file_name.includes("+")){
+    //    return false;
+    //}
 
     if (split_path[last] === "png" || split_path[last] === "jpg" || split_path[last] === "jpeg"){
         return true;

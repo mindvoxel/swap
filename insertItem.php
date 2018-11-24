@@ -39,6 +39,7 @@ $password = $_SESSION['password'];
       <h1>&nbspEdit Inventory</h1></p>
     </div>
     <div class = "container-fluid">
+
     <?php 
     $host = "localhost";
 	  $user = "swapadmin";
@@ -67,6 +68,13 @@ $password = $_SESSION['password'];
           echo("<td>".($row['name'])."</td><td>".($row['description'])."</td><td>".($row['value'])."</td></tr>");
 				}  
         echo("</table>");
+
+        //Chris' code which appends an error to the insertion page if the name of an item
+        //a user is trying to insert already exists in the db
+        if (isset($_SESSION['name_exists']) && $_SESSION['name_exists'] == true){
+          echo "Item with that name already exists in the database!";
+          $_SESSION['name_exists'] = false; //reset the variable
+        }
     ?>
     </div>
     
@@ -82,8 +90,8 @@ $password = $_SESSION['password'];
          
          <input type = "text" name = "name" class="form-control" placeholder = "Item-Name" required><br/>
          
-         <!--Are we allowed to use HTML validation, if we already have already fulfilled the JS validation requirment?-->
-         <input type = "text" name = "desc" class="form-control" placeholder = "Description" pattern ="[A-Z]" autofocus required title= 
+         <!--Blank pattern for now-->
+         <input type = "text" name = "desc" class="form-control" placeholder = "Description" autofocus required title= 
          "Limit your description to 140 characters. No special characters (+-!@#$%&*)" min="1" max="140" required></br>
         
          <input type = "number" name = "value" class="form-control" placeholder = "Value" min="1" max="500000"
