@@ -71,8 +71,9 @@ $_SESSION['password']   = 'password';
     <div style="margin:10px">
       <hr>
       <p>If you have any questions about Swap, please contact the system administrator at <a href="mailto:admin@swap.com">admin@swap.com</a></p>
+      <p>Return to <a href="login.php">login.</a></p>
     </div>
-    
+     
   </body>
 </html>
 

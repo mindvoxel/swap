@@ -8,10 +8,10 @@ $body = <<<EOBODY
             
             <div class="form-group">
                     Username:
-                    <input class="form-control" type = 'text' name="username" required>
+                    <input class="form-control" type = 'text' name="username" pattern="[\w]" min ="1" max="15" required>
                     <br>
                     Password:
-                    <input class="form-control" type = "password" name="password" required>
+                    <input class="form-control" type = "password" name="password" pattern="[\w!\$\?\+-@#\$%&\*]" min ="1" max="15"  required>
                     <br>
                     <button class="btn btn-primary" type="submit"  name ="signup">Sign up!</button>
             </div>
