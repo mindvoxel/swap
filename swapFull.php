@@ -1,6 +1,36 @@
 <!doctype html>
 
-<?php  
+<?php
+
+require_once("generate.php");
+require_once("profile.php");
+
+if (!isset($_SESSION)) {
+    session_start();
+}
+
+#check to make sure logged in correctly, if not send to login page
+
+if (!isset($_SESSION["username"]) || !isset($_SESSION["password"])) {
+    header("Location: login.php");
+} else {
+    $username = $_SESSION['username'];
+    $passwordValue = $_SESSION['password'];
+    $temp = new Profile("", "", []);
+    $profile = $temp->find_profile_on_db($username);
+    if ($profile == null) { #couldnt find the username on the db
+        header("Location: login.php");
+    }
+    $password_encrypted = $profile->get_password();
+    if (!password_verify($passwordValue, $password_encrypted)) { #password was wrong
+        header("Location: login.php");
+    }
+}
+$username = $_SESSION['username'];
+$passwordValue = $_SESSION['password'];
+
+#here is where we link the login and signup pages to the landing page
+
 
 function connectToDB($host, $user, $password, $database) {
 	$db_connection = new mysqli($host, $user, $password, $database);
@@ -13,16 +43,12 @@ function connectToDB($host, $user, $password, $database) {
 
 #check to make sure logged in correctly, if not send to login page
 
-session_start();
 $item1 = $_SESSION['item1'];
 $item2 = $_POST['swap'];
 
 list($recipient, $item1) = preg_split('/[+]/', $item1);
 list($sender, $item2) = preg_split('/[+]/', $item2);
 
-
-$username = $_SESSION['user'];
-$password = $_SESSION['password'];
 ?>
 
 <html>

@@ -2,6 +2,10 @@
 require_once("generate.php");
 require_once("profile.php");
 
+if (!isset($_SESSION)) {
+    session_start();
+}
+
 $top = <<<EOBODY
     <form action="{$_SERVER['PHP_SELF']}" method="post">
     <h1>Login to Swap!</h1>
@@ -42,7 +46,7 @@ if (isset($_POST["login"]) && isset($_POST["password"]) && isset($_POST["usernam
         $password_encrypted = $profile->get_password();
         if (password_verify($passwordValue, $password_encrypted)) {
             //just placeholder for what to do when a user successfully logs in
-            $body = <<<EOBOD
+/*            $body = <<<EOBOD
             
 <strong>Profile found on the database with the following values:</strong><br />
  <p>
@@ -58,7 +62,11 @@ if (isset($_POST["login"]) && isset($_POST["password"]) && isset($_POST["usernam
 </p>
 EOBOD;
             $page = generatePage($body, "Login");
-            echo $page;
+            echo $page;*/
+            $_SESSION["username"] = $username;
+            $_SESSION["password"] = $passwordValue;
+            header("Location: landing.php");
+
         } else {
             $bottom .= "<strong>No profile exists in the database for the specified username and password.</strong><br />";
             $body = $top . $bottom;
