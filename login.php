@@ -45,24 +45,7 @@ if (isset($_POST["login"]) && isset($_POST["password"]) && isset($_POST["usernam
         $username = $profile->get_username();
         $password_encrypted = $profile->get_password();
         if (password_verify($passwordValue, $password_encrypted)) {
-            //just placeholder for what to do when a user successfully logs in
-/*            $body = <<<EOBOD
-            
-<strong>Profile found on the database with the following values:</strong><br />
- <p>
-    <strong>Username: </strong>$username</br>
-    <strong>Inventory: Still need to display inventory</strong> // display the inventory
-</p>
-<p>
-<form action = "signup.php" method = "post">
-    <div class="form-group">
-            <button type="submit" name="signup" class="btn btn-outline-warning">Create a Swap Account!</button>
-    </div>
-</form>
-</p>
-EOBOD;
-            $page = generatePage($body, "Login");
-            echo $page;*/
+
             $_SESSION["username"] = $username;
             $_SESSION["password"] = $passwordValue;
             header("Location: landing.php");
