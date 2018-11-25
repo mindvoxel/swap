@@ -36,6 +36,7 @@ function connectToDB($host, $user, $password, $database) {
 	        return $db_connection;
 	}
 }
+
 ?>
 
 <html>
