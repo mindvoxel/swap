@@ -58,12 +58,8 @@ $passwordValue = $_SESSION['password'];
 </div>
 
 <div class="row1">
-    <form action="viewProfile.php" method="post">
-        <input type="submit" name="myProfile" value="View My Profile" style="height:30px; width:250px; margin:5px"
-               class="btn btn-warning"/>
-    </form>
-    <form action="editProfile.php" method="post">
-        <input type="submit" name="editProfile" value="Edit My Profile" style="height:30px; width:250px; margin:5px"
+      <form action="editInventory.php" method="post">
+        <input type="submit" name="editInventory" value="Edit My Inventory" style="height:40px; width:250px; margin:5px"
                class="btn btn-warning"/>
     </form>
 </div>
@@ -72,15 +68,11 @@ $passwordValue = $_SESSION['password'];
 
 <div class="row2">
     <form action="viewInventory.php" method="post">
-        <input type="submit" name="myInventory" value="View My Inventory" style="height:30px; width:250px; margin:5px"
-               class="btn btn-warning"/>
-    </form>
-    <form action="editInventory.php" method="post">
-        <input type="submit" name="editInventory" value="Edit My Inventory" style="height:30px; width:250px; margin:5px"
+        <input type="submit" name="myInventory" value="View My Inventory" style="height:40px; width:250px; margin:5px;"
                class="btn btn-warning"/>
     </form>
 </div>
-<p><br><br><br>
+<p><br><br>
 <p>
 
 <div class="row3">
@@ -93,7 +85,7 @@ $passwordValue = $_SESSION['password'];
 <p>
 <div class="row4">
     <form action="allListings.php" method="post">
-        <input type="submit" name="allListings" value="Browse and SWAP" style="height:40px; width:510px; margin:5px;"
+        <input type="submit" name="allListings" value="Browse and SWAP" style="height:40px; width:510px; margin:5px; padding-top: 10px"
                class="btn btn-warning"/>
     </form>
 </div>
@@ -125,11 +117,6 @@ $passwordValue = $_SESSION['password'];
     }
 
     .row1 {
-        float: left;
-        display: block;
-    }
-
-    .row2 {
         float: left;
         display: block;
     }

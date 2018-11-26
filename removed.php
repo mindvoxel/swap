@@ -83,8 +83,24 @@ function connectToDB($host, $user, $password, $database) {
 	            echo("Unable to Remove");
 	      }
 	      else{
-	            echo("Removal Complete");
-	      }}
+	      
+	        $sql = "DELETE FROM `inbox` WHERE `Recipient` = '".$username."' AND `Item1` = '".$name."'";
+	        $result = mysqli_query($db, $sql);	
+	           if (!$result) {
+	            echo("Unable to Remove");
+	      }
+	        else{
+	      
+	              $sql = "DELETE FROM `inbox` WHERE `Sender` = '".$username."' AND `Item2` = '".$name."'";
+	              $result = mysqli_query($db, $sql);	
+	                   if (!$result) {
+	                    echo("Unable to Remove");
+	              }
+	               else{
+	      
+	                        echo("Removal Complete");
+	                                }
+	        }}}
     ?>
     </div>
     <br/>

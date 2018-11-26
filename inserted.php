@@ -78,19 +78,15 @@ function connectToDB($host, $user, $password, $database) {
           //query the database to check item already exists, and if it does reroute to insertItem.php
           //Item-Name: must be unique for the user- if Mary has a car and Grace has a car it is fine 
           //but Grace cannot have 2 items named car and cannot contain +
-          $query = "SELECT * from items where name =" . $_POST['name'] . ";";
+          $query = "SELECT * from items where `name` ='" . $_POST['name'] . "' AND `user-key` = '".$username."';";
           if ($result=mysqli_query($db,$query)) {
             if(mysqli_num_rows($result) > 0){
                 //means there was already an item with that name in the database
                 //send them back to insertItem with an error message stored in the superglobal
-                $_SESSION['name_exists'] = true;
-                header("insertItem.php");
-            }
-          }else{
-            echo "Failed to check for item in table!";
-          }
-
-	         $sql = "INSERT INTO `items`(`Image`, `name`, `user-key`, `description`, `value`) 
+                echo("Unable to Insert: Name already in use;");
+            }else{
+            
+            $sql = "INSERT INTO `items`(`Image`, `name`, `user-key`, `description`, `value`) 
            VALUES ('".$image."','".$_POST['name']."','".$username."','".$_POST['desc']."',".$_POST['value'].")";
 	
 	        $result = mysqli_query($db, $sql);	
@@ -102,6 +98,11 @@ function connectToDB($host, $user, $password, $database) {
 	  else{
 	        echo("Insertion Complete");
 	  }
+            
+            }
+          }
+
+	         
     ?>
     </div>
     <br/>
