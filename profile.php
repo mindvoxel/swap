@@ -99,7 +99,7 @@
 
                     //need to link the inventory table to the profile table with a key, not quite sure how to do that
 
-                    if ($conn->query($sql) === TRUE && $conn->query($sql2) === TRUE) {
+                    if ($conn->query($sql) === TRUE && $conn->query($sql2) === TRUE && $conn->query($sql3) === TRUE) {
                         "Table profiles table created successfully";
                         /* application to be added to table */
                         $sqlQuery = sprintf("insert into $table (username,password) values ('%s', '%s')",
