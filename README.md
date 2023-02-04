@@ -1,7 +1,10 @@
 # swap #
-## This is a project that was created for University of Maryland's CMSC335 (formerly known as CMSC389N)
-## ebay mixed with a barter system ##
-### Demo of project: https://www.youtube.com/watch?v=KG9N4Sw5CZ0 ###
+## Note: This is a project that was created for University of Maryland's CMSC335 (formerly known as CMSC389N)
+
+## What is swap? ##
+Demo of project: https://www.youtube.com/watch?v=KG9N4Sw5CZ0
+
+## How to run
 Move this folder to htdocs in xampp or lampp to run the site.
 
 The name of the mysql database is `swapbase` and the name of the profiles table is`profiles` which links to a table called
